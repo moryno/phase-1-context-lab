@@ -1,4 +1,51 @@
 /* Your Code Here */
+const createEmployeeRecord = (array) => {
+    return {
+        firstName: array[0],
+        familyName: array[1],
+        title: array[2],
+        payPerHour: array[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+}
+
+const createEmployeeRecords = (arrays) => {
+    return arrays.map(array => createEmployeeRecord(array))
+}
+
+function createTimeInEvent(dateStamp){
+   
+    const [date, hour] = dateStamp.split(' ')
+
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this
+}
+function createTimeOutEvent(dateStamp){
+   
+    const [date, hour] = dateStamp.split(' ')
+
+    this.timeOutEvents.push({
+        type: "TimeOut",
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this
+}
+
+function hoursWorkedOnDate(date){
+    const timeIn = this.timeInEvents.find( timeInEvent => timeInEvent.date === date)
+    const timeOut = this.timOutEvents.find( timeOutEvent => timeOutEvent.date === date)
+    const hoursWorked = (timeOut.hour - timeIn.hour) / 100;
+    return hoursWorked
+}
+
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
